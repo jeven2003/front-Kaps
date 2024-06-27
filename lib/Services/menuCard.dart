@@ -31,4 +31,5 @@ class Menucard extends StatelessWidget {
       ),
     );
   }
+
 }

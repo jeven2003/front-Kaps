@@ -10,4 +10,5 @@ void main() => runApp(MaterialApp(
     '/menu': (context) => Menu(),
     '/profile' : (context) => Home(),
 },
+
 ));

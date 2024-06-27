@@ -18,32 +18,6 @@ class _MenuState extends State<Menu> {
     Product(productName: "Dark Choco", price: 75.00),
   ];
 
-  Widget cardTemplate(product){
-    return Card(
-      color: Colors.grey,
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Text(
-            product.productName,
-            style: TextStyle(
-            fontSize: 20.0,
-              fontWeight: FontWeight.w700
-          ),
-          ),
-          Text('${product.price}',
-          style: TextStyle(
-            color: Colors.black,
-          ),),
-        ],
-      ),
-    ),
-    );
-
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -61,4 +35,5 @@ class _MenuState extends State<Menu> {
       ),
     );
   }
+
 }
