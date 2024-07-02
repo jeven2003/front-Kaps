@@ -104,6 +104,7 @@ class _signupState extends State<signup> {
                         name = value!;
                       },
                     ),
+                    SizedBox(height: 45.0),
                     ElevatedButton(
                         onPressed: (){
                           if(formKey.currentState!.validate()){
@@ -119,6 +120,28 @@ class _signupState extends State<signup> {
                           foregroundColor: Colors.white,
                         ),
                     ),
+                    SizedBox(height: 60.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Already have an account? ',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(height: 30.0),
+                        InkWell(
+                          child: Text(
+                            'Plaese Login',
+                            style: TextStyle(
+                                color: Colors.blue
+                            ),
+                          ),
+                          onTap: () => Navigator.popAndPushNamed(context, '/login'),
+                        ),
+                      ],
+                    )
                   ]
                 ),
               )
