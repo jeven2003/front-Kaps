@@ -5,6 +5,7 @@ import 'package:untitled2/Services/product.dart';
 import 'package:untitled2/Services/menuCard.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:untitled2/pages/selectedProducts.dart';
 class Menu extends StatefulWidget {
   const Menu({super.key});
 
@@ -75,6 +76,15 @@ fetchData() async{
                           style: TextStyle(color: Colors.grey[600]),)
                         ]
                       ),
+                        onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      selectedProducts(product: products[index]),
+                              )
+                          );
+                        },
                       ),
                     );
                   }
