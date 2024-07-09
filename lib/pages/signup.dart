@@ -17,7 +17,8 @@ class _signupState extends State<signup> {
   String name = '';
   String email = '';
   String password = '';
-
+  bool _obscure = true;
+  IconData _obscureIcon = Icons.visibility_off;
 
   createAccount(User user)async{
     final response = await http.post(
@@ -61,6 +62,7 @@ class _signupState extends State<signup> {
                       maxLength: 40,
                       decoration: InputDecoration(
                         label: Text('Name'),
+                        prefixIcon: Icon(Icons.person),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         )
@@ -83,6 +85,7 @@ class _signupState extends State<signup> {
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           label: Text('Email'),
+                          prefixIcon: Icon(Icons.email),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           )
@@ -102,12 +105,27 @@ class _signupState extends State<signup> {
                     ),
                     SizedBox(height: 30.0),
                     TextFormField(
-                      obscureText: true,
+                      obscureText: _obscure,
                       decoration: InputDecoration(
                           label: Text('Password'),
+                          prefixIcon: Icon(Icons.lock_rounded),
+                          suffixIcon: IconButton(
+                            icon: Icon(_obscureIcon),
+                            onPressed: (){
+                              setState(() {
+                                _obscure = !_obscure;
+                                if(_obscure) {
+                                  _obscureIcon = Icons.visibility_off;
+                                }else{
+                                  _obscureIcon = Icons.visibility;
+                                }
+                              });
+                            },
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           )
+
                       ),
                       validator: (value){
                         if (value == null || value.isEmpty){
