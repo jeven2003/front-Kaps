@@ -97,7 +97,7 @@ class _signupState extends State<signup> {
                         return null;
                       },
                       onSaved: (value){
-                        name = value!;
+                        email = value!;
                       },
                     ),
                     SizedBox(height: 30.0),
@@ -122,7 +122,7 @@ class _signupState extends State<signup> {
                         return null;
                       },
                       onSaved: (value){
-                        name = value!;
+                        password = value!;
                       },
                     ),
                     SizedBox(height: 45.0),
