@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import '../Services/user.dart';
 
 class login extends StatefulWidget {
   const login({super.key});
@@ -11,6 +15,28 @@ class _loginState extends State<login> {
   final formKey = GlobalKey<FormState>();
   String email= '';
   String password = '';
+
+  Widget buttonContent = Text('Log in');
+
+  Widget loadingDisplay = CircularProgressIndicator();
+
+  Future<bool> login(User user)async{
+    final response = await http.post(
+      Uri.parse('http://10.0.2.2:8080/api/v1/Auth/login'),
+      headers: <String, String>{
+        'Content-Type' : 'application/json; charset=UTF-8'
+    },
+      body: jsonEncode(<String, dynamic>{
+        'usernameorEmail' : user.email,
+        'password' : user.password,
+      })
+    );
+    if(response.statusCode == 200){
+      return true;
+    }
+      return false;
+    //print(response.body);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,19 +113,31 @@ class _loginState extends State<login> {
                             onPressed: (){
                               if(formKey.currentState!.validate()){
                                 formKey.currentState!.save();
-                                print(email);
-                                print(password);
-                                Navigator.pushReplacementNamed(context, '/');
+                                User user = User(
+                                  username: '',
+                                  email:email,
+                                  password:password,
+                                );
+                                /*if(login(user)){
+                                  Navigator.pushReplacementNamed(context, '/dashboard');
+                                }*/
+                                setState(() {
+                                  buttonContent = FutureBuilder(
+                                      future: login(user),
+                                      builder: (context, snapshots){
+                                        if(snapshots.connectionState == ConnectionState.waiting){
+                                          return loadingDisplay;
+                                  }
+                                        if (snapshots.hasData){
+                                  }
+                                        return Text('Log In');
+                                  }
+                                  );
+                                });
+                                  Navigator.pushReplacementNamed(context, '/');
                               }
                             },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.login),
-                                SizedBox(width: 10.0,),
-                                Text('Sign In')
-                              ],
-                            ),
+                            child: buttonContent,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.brown,
                               foregroundColor: Colors.white,

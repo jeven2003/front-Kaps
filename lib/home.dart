@@ -12,9 +12,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('User Profile'),
+        title: Text('USER PROFILE',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         backgroundColor: Colors.brown[700],
         centerTitle: true,
       ),
@@ -29,13 +34,13 @@ class _HomeState extends State<Home> {
               children: <Widget>[
                 Center(
                 child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/boy.png'),
-                  radius: 60.0,
+                  backgroundImage: AssetImage('assets/pic.jpg'),
+                  radius: 80.0,
                 ),
                 ),
                 Divider(height: 55.0,
                 color: Colors.black,
-                thickness: 5.0,),
+                thickness: 2.0,),
                 Row(
                   children: [
                     Icon(
@@ -57,7 +62,7 @@ class _HomeState extends State<Home> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
-                    fontSize: 25.0,
+                    fontSize: 20.0,
                   ),
                 ),
                 SizedBox(height: 30.0,),
@@ -82,7 +87,7 @@ class _HomeState extends State<Home> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
-                    fontSize: 25.0,
+                    fontSize: 20.0,
                   ),
                 ),
                 SizedBox(height: 30.0,),
@@ -106,7 +111,7 @@ class _HomeState extends State<Home> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
-                    fontSize: 25.0,
+                    fontSize: 20.0,
                   ),
                 ),
 
@@ -126,13 +131,13 @@ class _HomeState extends State<Home> {
 
                   child: Text ('Add Year',
                   style: TextStyle(
-                    fontSize: 20.0,
+                    fontSize: 15.0,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                   ),
                   style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all(Colors.white12)
+                      backgroundColor: WidgetStateProperty.all(Colors.brown[400])
                   ),
                 ),
               ],

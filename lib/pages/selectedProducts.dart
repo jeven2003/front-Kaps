@@ -26,7 +26,12 @@ class _selectedProductsState extends State<selectedProducts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Order'),
+        title: Text('ORDER',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         backgroundColor: Colors.brown,
         centerTitle: true,
       ),

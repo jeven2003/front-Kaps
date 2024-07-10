@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -28,10 +29,11 @@ class _DashboardState extends State<Dashboard> {
             }
           },
           currentIndex: 0,
+          backgroundColor: Colors.white38,
           items: const[
             BottomNavigationBarItem(
                 icon: Icon(Icons.fastfood, color: Colors.brown,),
-                label: 'Menu'
+                label: 'Menu',
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.person, color: Colors.brown),
@@ -44,7 +46,12 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
         appBar: AppBar(
-          title: Text('KAPS COFFEE SHOP'),
+          title: Text('KAPS COFFEE SHOP',
+          style: TextStyle(
+              fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+          ),
           backgroundColor: Colors.brown[700],
           centerTitle: true,
         ),
@@ -54,11 +61,39 @@ class _DashboardState extends State<Dashboard> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
-                  child: Image.asset(
-                    'assets/coffee.jpg',
-                    width: 360,
+                FlutterCarousel(
+                  options: CarouselOptions(
+                    height: 400.0,
+                    showIndicator: true,
+                    slideIndicator: CircularSlideIndicator(),
                   ),
+                  items: [
+                    'assets/one.jpg',
+                    'assets/two.jpg',
+                    'assets/three.jpg',
+                    'assets/four.jpg',
+                    'assets/five.jpg',
+                  ].map((String imagePath) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 5.0),
+                          decoration: BoxDecoration(
+                            color: Colors.black12,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Image.asset(
+                              imagePath,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  }).toList(),
                 ),
               ],
             ),

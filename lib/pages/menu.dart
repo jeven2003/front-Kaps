@@ -39,7 +39,12 @@ fetchData() async{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Menu'),
+        title: Text('MENU',
+          style: TextStyle(
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+        ),
+        ),
         backgroundColor: Colors.brown[700],
         centerTitle: true,
       ),
