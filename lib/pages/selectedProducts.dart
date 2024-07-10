@@ -44,7 +44,7 @@ class _selectedProductsState extends State<selectedProducts> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                ' ₱ ${totalAmount.toString()}',
+                ' ₱ ${totalAmount.toStringAsFixed(2)}',
                 style: TextStyle(
                   fontSize:20.0,
                 ),

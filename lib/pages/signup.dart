@@ -42,8 +42,9 @@ class _signupState extends State<signup> {
         child: Padding(
           padding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height: 50.0),
               Text(
                 'Lets get Started',
                 style: TextStyle(
@@ -52,7 +53,7 @@ class _signupState extends State<signup> {
                   fontSize: 24.5,
                 ),
               ),
-              SizedBox(height: 30.0),
+              SizedBox(height: 40.0),
               Form(
                 key: formKey,
                 child: Column(
@@ -82,6 +83,7 @@ class _signupState extends State<signup> {
                     ),
                     SizedBox(height: 30.0),
                     TextFormField(
+                      maxLength: 40,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           label: Text('Email'),
@@ -105,6 +107,7 @@ class _signupState extends State<signup> {
                     ),
                     SizedBox(height: 30.0),
                     TextFormField(
+                      maxLength: 40,
                       obscureText: _obscure,
                       decoration: InputDecoration(
                           label: Text('Password'),
@@ -156,7 +159,15 @@ class _signupState extends State<signup> {
                             createAccount(user);
                           }
                         },
-                        child:  Text ('Signup'),
+
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.login),
+                          SizedBox(width: 10.0,),
+                          Text('Sign Up')
+                        ],
+                      ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.brown,
                           foregroundColor: Colors.white,
@@ -170,14 +181,16 @@ class _signupState extends State<signup> {
                           'Already have an account? ',
                           style: TextStyle(
                             color: Colors.black,
+                            fontWeight: FontWeight.bold
                           ),
                         ),
                         SizedBox(height: 30.0),
                         InkWell(
                           child: Text(
-                            'Plaese Login',
+                            'Please Login',
                             style: TextStyle(
-                                color: Colors.blue
+                                color: Colors.blue,
+                              fontWeight: FontWeight.bold
                             ),
                           ),
                           onTap: () => Navigator.popAndPushNamed(context, '/login'),
