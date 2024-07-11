@@ -46,7 +46,7 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
         appBar: AppBar(
-          title: Text('KAPS COFFEE SHOP',
+          title: Text('DASHBAORD',
           style: TextStyle(
               fontSize: 20.0,
             fontWeight: FontWeight.bold,
@@ -57,6 +57,12 @@ class _DashboardState extends State<Dashboard> {
         ),
         backgroundColor: Colors.white,
         body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/final.png'),
+                fit: BoxFit.cover
+            ),
+          ),
           child: SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +70,10 @@ class _DashboardState extends State<Dashboard> {
                 FlutterCarousel(
                   options: CarouselOptions(
                     height: 400.0,
+                    autoPlay: true,
                     showIndicator: true,
+                    autoPlayInterval: Duration(seconds: 2),
+                    autoPlayAnimationDuration: Duration(milliseconds: 700),
                     slideIndicator: CircularSlideIndicator(),
                   ),
                   items: [

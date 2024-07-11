@@ -40,7 +40,11 @@ class _selectedProductsState extends State<selectedProducts> {
         children: [
           Column(
               children: [
-                Text(widget.product.productName),
+                Text(widget.product.productName,
+                style: TextStyle(
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                ),),
                 Text(widget.product.description),
               ]
           ),

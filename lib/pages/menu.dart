@@ -45,62 +45,70 @@ fetchData() async{
           fontWeight: FontWeight.bold,
         ),
         ),
-        backgroundColor: Colors.brown[700],
+        backgroundColor: Colors.brown,
         centerTitle: true,
       ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
-        child: FutureBuilder(
-          future: products,
-          builder: (context, snapshots){
-            if(snapshots.connectionState == ConnectionState.waiting){
-              return Center(
-                child: SpinKitSquareCircle(
-                  color: Colors.brown[200],
-                  size: 60.0,
-                ),
-              );
-            }
-            if(snapshots.hasData){
-              List products = snapshots.data!;
-              return Padding(
-                padding: EdgeInsets.all(3.0),
-                child: ListView.builder(
-                  itemCount: products.length,
-                  itemBuilder: (context, index){
-                    return Card(
-                      child: ListTile(
-                        title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                              products[index].productName,
-                            style: TextStyle(fontWeight:FontWeight.bold)),
-                          Text(
-                              products[index].price.toString(),
-                          style: TextStyle(color: Colors.grey[600]),)
-                        ]
-                      ),
-                        onTap: (){
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      selectedProducts(product: products[index]),
-                              )
-                          );
-                        },
-                      ),
-                    );
-                  }
-                ),
-              );
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/bg2.jpg'),
+            fit: BoxFit.cover
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+          child: FutureBuilder(
+            future: products,
+            builder: (context, snapshots){
+              if(snapshots.connectionState == ConnectionState.waiting){
+                return Center(
+                  child: SpinKitSquareCircle(
+                    color: Colors.brown[200],
+                    size: 60.0,
+                  ),
+                );
+              }
+              if(snapshots.hasData){
+                List products = snapshots.data!;
+                return Padding(
+                  padding: EdgeInsets.all(3.0),
+                  child: ListView.builder(
+                    itemCount: products.length,
+                    itemBuilder: (context, index){
+                      return Card(
+                        child: ListTile(
+                          title: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                                products[index].productName,
+                              style: TextStyle(fontWeight:FontWeight.bold)),
+                            Text(
+                                products[index].price.toString(),
+                            style: TextStyle(color: Colors.grey[600]),)
+                          ]
+                        ),
+                          onTap: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        selectedProducts(product: products[index]),
+                                )
+                            );
+                          },
+                        ),
+                      );
+                    }
+                  ),
+                );
 
-            }
-            return Center(
-              child: Text('Unable to load data'),
-            );
-          },
+              }
+              return Center(
+                child: Text('Unable to load data'),
+              );
+            },
+          ),
         ),
       ),
     );
